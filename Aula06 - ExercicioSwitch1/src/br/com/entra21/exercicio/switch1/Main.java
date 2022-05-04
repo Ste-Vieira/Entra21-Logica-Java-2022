@@ -8,7 +8,7 @@ public class Main {
 		
 		System.out.println("Qual sua estação preferida?");
 		System.out.println("1 = Primavera");
-		System.out.println("2 = Outuno");
+		System.out.println("2 = Outono");
 		System.out.println("3 = Inverno");
 		System.out.println("4 = Verão");
 		Scanner entrada = new Scanner (System.in);
