@@ -5,40 +5,72 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		String calculo;
-		float numeroA, numeroB;
-		Scanner entrada = new Scanner(System.in);
-		
-		System.out.println("CALCULADORA");
-		System.out.println("Digite primeiro número:");
-		numeroA = entrada.nextFloat();
-		System.out.println("Digite o segundo número:");
-		numeroB = entrada.nextFloat();
-		System.out.println("Escolha a operação");
-		System.out.println("\"1 - Adição\\n2 - Subtracão\\n3 - Divisão\\n4 - Multiplicacão\\n0");
-		
-		
-		switch (calculo) {
-		case "1":
-		case "Adição":
-			adicao();
-			System.out.println("A soma do "+numeroA+" e "+numeroB+" foi "+verAdicao(numeroA, numeroB));
+		Scanner input = new Scanner(System.in);
+		String option;
+
+		System.out.println("|-----------------------------------------------|");
+		System.out.println("|------------------CALCULADORA------------------|");
+		System.out.println("|-----------------------------------------------|");
+		System.out.println("choose an option:");
+		System.out.println("0 - QUIT \n1 - ADD  \n2 - SUBTRACT  \n3 - MULTIPLY \n4 - DIVIDE");
+		option = input.next();
+
+		runSwitch(option.toLowerCase());
+
+	}
+
+	private static void runSwitch(String choseOption) {
+		final String INVALID_OPTION = "Invalid option try again";
+
+		switch (choseOption) {
+
+		case "0", "quit":
+			System.out.println("closing calculator");
 			break;
-		case "2":
-		case "Subtração":
-			System.out.println("A subtração do "+numeroA+" e "+numeroB+" foi "+verAdicao(numeroA, numeroB));
+		case "1", "add":
+			runAdd(inputNumber((byte) 1), inputNumber((byte) 2));
+			break;
+		case "2", "subtract":
+			runSubtract(inputNumber((byte) 1), inputNumber((byte) 2));
+			break;
+		case "3", "multiply":
+			runMultiply (inputNumber((byte)1), inputNumber((byte) 2));
+			break;
+		case "4", "divide":
+			runDivide (inputNumber((byte)1), inputNumber((byte) 2));
+			break;
+		default:
+			System.out.println(INVALID_OPTION);
+			main(null);
 			break;
 		}
 	}
-	public static float adicao(float numeroA, float numeroB) {
-		
-		return numeroA + numeroB;
-		
+
+	private static float inputNumber(byte position) {
+		System.out.println("Inform the " + position + "" + (position == 1 ? "st" : "nd") + " number");
+		float number;
+		number = new Scanner(System.in).nextFloat();
+		return number;
 	}
-	public static float adicao(float numeroA, float numeroB) {
-		
-		return numeroA + numeroB;
-		
+
+	private static void runAdd(float firstNumber, float secondNumber) {
+		System.out.println("Result: " + (firstNumber + secondNumber));
+		main(null);
 	}
+
+	private static void runSubtract(float firstNumber, float secondNumber) {
+		System.out.println("Result: " + (firstNumber-secondNumber));
+		main(null);
+	}
+	
+	private static void runMultiply (float firstNumber, float secondNumber) {
+		System.out.println("Resut: "+(firstNumber*secondNumber));
+		main(null);
+	}
+	
+	private static void runDivide (float firstNumber, float secondNumber) {
+		System.out.println("Result: "+(firstNumber/secondNumber));
+		main(null);
+	}
+
 }
